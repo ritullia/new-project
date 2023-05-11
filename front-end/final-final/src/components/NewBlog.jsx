@@ -9,7 +9,7 @@ export const NewBlog = () => {
     <>
       <Form
         style={{
-          width: "600px",
+          width: "auto",
           margin: "50px",
           backgroundColor: "#b9e7ed",
           padding: "20px",
@@ -42,7 +42,7 @@ export const NewBlog = () => {
           />
         </FloatingLabel>
 
-        <Button variant="primary" type="submit" style={{ marginTop: "20px" }}>
+        <Button variant="warning" type="submit" style={{ marginTop: "20px" }}>
           Pateikti
         </Button>
       </Form>
