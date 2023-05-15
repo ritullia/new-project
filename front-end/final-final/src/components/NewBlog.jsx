@@ -1,13 +1,47 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
+// import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 export const NewBlog = () => {
+  const [postsData, setPostsData] = useState({
+    title: " ",
+    description: " ",
+    image: " ",
+  });
+
+  const navigate = useNavigate();
+  console.log("submitinau", postsData);
+
+  const onHandleSubmitFom = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:5000/posts", postsData)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleOnChange = (event) => {
+    event.preventDefault();
+    setPostsData({
+      ...postsData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <>
       <Form
+        onSubmit={onHandleSubmitFom}
         style={{
           width: "auto",
           margin: "50px",
@@ -17,30 +51,41 @@ export const NewBlog = () => {
         }}
       >
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group>
             <Form.Label>Img Url</Form.Label>
-            <Form.Control type="url" placeholder="Enter image url" />
+            <Form.Control
+              type="url"
+              placeholder="Enter image url"
+              onChange={handleOnChange}
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group>
             <Form.Label>Title</Form.Label>
-            <Form.Control type="email" placeholder="Enter title" />
+            <Form.Control
+              type="text"
+              placeholder="Enter title"
+              onChange={handleOnChange}
+            />
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridAddress1">
           <Form.Label>Text here</Form.Label>
+          <FloatingLabel
+            controlId="floatingTextarea2"
+            label="Insert yor text..."
+          >
+            <Form.Control
+              as="textarea"
+              placeholder="Leave a comment here"
+              maxLength={1000}
+              style={{ height: "100px" }}
+              onChange={handleOnChange}
+            />
+          </FloatingLabel>
         </Form.Group>
-
-        <FloatingLabel controlId="floatingTextarea2" label="Insert yor text...">
-          <Form.Control
-            as="textarea"
-            placeholder="Leave a comment here"
-            maxLength={1000}
-            style={{ height: "100px" }}
-          />
-        </FloatingLabel>
 
         <Button variant="warning" type="submit" style={{ marginTop: "20px" }}>
           Pateikti
