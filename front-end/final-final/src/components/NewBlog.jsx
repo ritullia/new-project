@@ -42,8 +42,8 @@ export const NewBlog = () => {
       <Form
         onSubmit={onHandleSubmitForm}
         style={{
-          width: "auto",
-          margin: "50px",
+          maxWidth: "50%",
+          margin: "140px auto",
           backgroundColor: "#b9e7ed",
           padding: "20px",
           borderRadius: "12px",
