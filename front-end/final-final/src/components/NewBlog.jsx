@@ -18,13 +18,13 @@ export const NewBlog = () => {
   const navigate = useNavigate();
   console.log("SUBMIT'INAU", postsData);
 
-  const onHandleSubmitFom = (e) => {
+  const onHandleSubmitForm = (e) => {
     e.preventDefault();
 
     axios
       .post("http://localhost:5000/posts", postsData)
       .then((response) => {
-        console.log(response.data);
+        console.log("successful response", response.data);
         navigate("/posts");
       })
       .catch((err) => console.log(err));
@@ -40,7 +40,7 @@ export const NewBlog = () => {
   return (
     <>
       <Form
-        onSubmit={onHandleSubmitFom}
+        onSubmit={onHandleSubmitForm}
         style={{
           width: "auto",
           margin: "50px",
@@ -76,10 +76,11 @@ export const NewBlog = () => {
           <Form.Label>Text here</Form.Label>
           <FloatingLabel
             controlId="floatingTextarea2"
-            label="Insert yor text..."
+            label="Insert your text..."
           >
             <Form.Control
               as="textarea"
+              name="description"
               placeholder="Leave a comment here"
               maxLength={1000}
               style={{ height: "100px" }}
@@ -89,7 +90,7 @@ export const NewBlog = () => {
         </Form.Group>
 
         <Button variant="warning" type="submit" style={{ marginTop: "20px" }}>
-          Pateikti
+          Add Post
         </Button>
       </Form>
     </>
