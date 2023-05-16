@@ -22,7 +22,15 @@ export const BlogList = () => {
 
   return (
     <>
-      <ul style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+      <ul
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "20px",
+          margin: "100px auto",
+        }}
+      >
         {posts.map((post) => (
           <BlogItem post={post} />
         ))}
