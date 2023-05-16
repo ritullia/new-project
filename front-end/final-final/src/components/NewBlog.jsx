@@ -31,7 +31,6 @@ export const NewBlog = () => {
   };
 
   const handleOnChange = (event) => {
-    event.preventDefault();
     setPostsData({
       ...postsData,
       [event.target.name]: event.target.value,
@@ -55,6 +54,7 @@ export const NewBlog = () => {
             <Form.Label>Img Url</Form.Label>
             <Form.Control
               type="url"
+              name="image"
               placeholder="Enter image url"
               onChange={handleOnChange}
             />
@@ -65,6 +65,7 @@ export const NewBlog = () => {
             <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
+              name="title"
               placeholder="Enter title"
               onChange={handleOnChange}
             />
@@ -79,6 +80,7 @@ export const NewBlog = () => {
           >
             <Form.Control
               as="textarea"
+              name="description"
               placeholder="Leave a comment here"
               maxLength={1000}
               style={{ height: "100px" }}
