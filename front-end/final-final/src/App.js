@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <Routes>
-      <Route element={<BlogList />} path="/" />
+      <Route element={<BlogList />} path="/posts" />
       <Route element={<NewBlog />} path="/addBlog" />
     </Routes>
   );

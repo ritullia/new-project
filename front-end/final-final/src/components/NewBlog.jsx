@@ -16,7 +16,7 @@ export const NewBlog = () => {
   });
 
   const navigate = useNavigate();
-  console.log("submitinau", postsData);
+  console.log("SUBMIT'INAU", postsData);
 
   const onHandleSubmitFom = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export const NewBlog = () => {
       .post("http://localhost:5000/posts", postsData)
       .then((response) => {
         console.log(response.data);
-        navigate("/");
+        navigate("/posts");
       })
       .catch((err) => console.log(err));
   };
@@ -80,7 +80,6 @@ export const NewBlog = () => {
           >
             <Form.Control
               as="textarea"
-              name="description"
               placeholder="Leave a comment here"
               maxLength={1000}
               style={{ height: "100px" }}
